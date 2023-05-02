@@ -9,9 +9,7 @@
 
           <q-item-section>
             <q-item-label class="text-weight-bold">Dashboard</q-item-label>
-            <q-item-label caption
-              >Halaman statistik data penduduk Kabupaten Pesawaran</q-item-label
-            >
+            <q-item-label caption>Halaman statistik data penduduk Kabupaten Pesawaran</q-item-label>
           </q-item-section>
         </q-item>
       </q-card>
@@ -24,12 +22,11 @@
             </q-avatar>
           </q-card-section>
           <q-card-section>
-            <q-item-label class="text-white text-weight-bold" >
-              <vue3-autocounter ref='counter' :startAmount='0' :endAmount='`${ this.penduduk }`' :duration='1' separator='.' :autoinit='true'/>
+            <q-item-label class="text-white text-weight-bold">
+              <vue3-autocounter ref='counter' :startAmount='0' :endAmount='`${this.penduduk}`' :duration='1' separator='.'
+                :autoinit='true' />
             </q-item-label>
-            <q-item-label caption class="text-white"
-              >Total Penduduk Pesawaran</q-item-label
-            >
+            <q-item-label caption class="text-white">Total Penduduk Pesawaran</q-item-label>
           </q-card-section>
         </q-card>
 
@@ -41,11 +38,10 @@
           </q-card-section>
           <q-card-section>
             <q-item-label class="text-white text-weight-bold">
-              <vue3-autocounter ref='counter' :startAmount='0' :endAmount='`${ this.penduduk_pria }`' :duration='1' separator='.' :autoinit='true'/>
+              <vue3-autocounter ref='counter' :startAmount='0' :endAmount='`${this.penduduk_pria}`' :duration='1'
+                separator='.' :autoinit='true' />
             </q-item-label>
-            <q-item-label caption class="text-white"
-              >Total Penduduk Pria</q-item-label
-            >
+            <q-item-label caption class="text-white">Total Penduduk Pria</q-item-label>
           </q-card-section>
         </q-card>
 
@@ -57,22 +53,16 @@
           </q-card-section>
           <q-card-section>
             <q-item-label class="text-white text-weight-bold">
-              <vue3-autocounter ref='counter' :startAmount='0' :endAmount='`${ this.penduduk_wanita }`' :duration='1' separator='.' :autoinit='true'/>
+              <vue3-autocounter ref='counter' :startAmount='0' :endAmount='`${this.penduduk_wanita}`' :duration='1'
+                separator='.' :autoinit='true' />
             </q-item-label>
-            <q-item-label caption class="text-white"
-              >Total Penduduk Wanita</q-item-label
-            >
+            <q-item-label caption class="text-white">Total Penduduk Wanita</q-item-label>
           </q-card-section>
         </q-card>
       </div>
 
       <q-card class="my-card q-mt-md">
-        <q-table
-          :rows="rows"
-          :columns="columns"
-          :pagination="pagination"
-          :filter="filter"
-        >
+        <q-table :rows="rows" :columns="columns" :pagination="pagination" :filter="filter">
           <template v-slot:top>
             <div class="col">
               <q-item-section>
@@ -83,38 +73,18 @@
 
             <q-space />
 
-            <q-btn
-              flat
-              color="indigo-10"
-              icon="search"
-              dense
-              rounded
-              @click="visibles = !visibles"
-              size="md"
-              class="q-mr-sm"
-            />
+            <q-btn flat color="indigo-10" icon="search" dense rounded @click="visibles = !visibles" size="md"
+              class="q-mr-sm" />
             <q-slide-transition>
               <div v-show="visibles">
-                <q-input
-                  outlined
-                  debounce="300"
-                  placeholder="Pencarian"
-                  style="width: 300px"
-                  color="indigo-10"
-                  v-model="filter"
-                  dense
-                />
+                <q-input outlined debounce="300" placeholder="Pencarian" style="width: 300px" color="indigo-10"
+                  v-model="filter" dense />
               </div>
             </q-slide-transition>
           </template>
           <template v-slot:header="props">
             <q-tr :props="props">
-              <q-th
-                v-for="col in props.cols"
-                :key="col.name"
-                :props="props"
-                class="text-indigo-10"
-              >
+              <q-th v-for="col in props.cols" :key="col.name" :props="props" class="text-indigo-10">
                 {{ col.label }}
               </q-th>
             </q-tr>
@@ -143,7 +113,7 @@
               </q-td>
               <q-td key="ACTION" :props="props">
                 <div class="justify-center q-gutter-x-xs">
-                  <q-btn dense icon="visibility" flat size="sm" color="indigo-10" @click="this.confirm(props.row.NOMOR_KK)">
+                  <q-btn dense icon="visibility" flat size="sm" color="indigo-10" @click="this.confirm(props.row)">
                     <q-tooltip>DETAIL</q-tooltip>
                   </q-btn>
                 </div>
@@ -157,18 +127,12 @@
         <q-card style="width: 700px; max-width: 80vw;">
           <q-card-section class="bg-indigo-14 text-white">
             <div class="text-h6">DETAIL DATA PENDUDUK</div>
-            <div class="text-subtitle2">NOMOR KARTU KELUARGA <q-badge color="white" class="q-ml-sm q-pl-md q-pr-md text-indigo-14 text-subtitle2">{{ this.kk_penduduk }}</q-badge></div>
+            <div class="text-subtitle2">NOMOR KARTU KELUARGA <q-badge color="white"
+                class="q-ml-sm q-pl-md q-pr-md text-indigo-14 text-subtitle2">{{ this.kk_penduduk }}</q-badge></div>
           </q-card-section>
           <q-card-section>
-            <q-tabs
-              v-model="tab"
-              dense
-              class="text-grey"
-              active-color="primary"
-              indicator-color="primary"
-              align="left"
-              narrow-indicator
-            >
+            <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="primary" align="left"
+              narrow-indicator>
               <q-tab name="penduduk" label="PENDUDUK" />
               <q-tab name="keluarga" label="KELUARGA" />
               <q-tab name="informasi" label="INFORMASI PRIBADI" />
@@ -193,7 +157,7 @@
                     </q-item-section>
                   </q-item>
                 </div>
-                <q-separator/>
+                <q-separator />
                 <div class="row">
                   <q-item class="col">
                     <q-item-section>
@@ -220,7 +184,7 @@
                     </q-item-section>
                   </q-item>
                 </div>
-                <q-separator/>
+                <q-separator />
                 <div class="row">
                   <q-item class="col">
                     <q-item-section>
@@ -294,7 +258,7 @@
                       </q-item-section>
                     </q-item>
                   </div>
-                  <q-separator/>
+                  <q-separator />
                 </div>
               </q-tab-panel>
 
@@ -306,13 +270,13 @@
                       <q-item-label caption class="text-weight-bold">
                         <q-chip v-if="this.hp_penduduk === 'Ya'">
                           <q-avatar>
-                            <q-icon size="xs" color="blue" name="verified"/>
+                            <q-icon size="xs" color="blue" name="verified" />
                           </q-avatar>
                           YA
                         </q-chip>
                         <q-chip v-else>
                           <q-avatar>
-                            <q-icon size="xs" color="red" name="do_disturb"/>
+                            <q-icon size="xs" color="red" name="do_disturb" />
                           </q-avatar>
                           TIDAK
                         </q-chip>
@@ -325,13 +289,13 @@
                       <q-item-label caption class="text-weight-bold">
                         <q-chip v-if="this.ektp_penduduk === 'Ya'">
                           <q-avatar>
-                            <q-icon size="xs" color="blue" name="verified"/>
+                            <q-icon size="xs" color="blue" name="verified" />
                           </q-avatar>
                           YA
                         </q-chip>
                         <q-chip v-else>
                           <q-avatar>
-                            <q-icon size="xs" color="red" name="do_disturb"/>
+                            <q-icon size="xs" color="red" name="do_disturb" />
                           </q-avatar>
                           TIDAK
                         </q-chip>
@@ -344,13 +308,13 @@
                       <q-item-label caption class="text-weight-bold">
                         <q-chip v-if="this.akte_penduduk === 'Ya'">
                           <q-avatar>
-                            <q-icon size="xs" color="blue" name="verified"/>
+                            <q-icon size="xs" color="blue" name="verified" />
                           </q-avatar>
                           YA
                         </q-chip>
                         <q-chip v-else>
                           <q-avatar>
-                            <q-icon size="xs" color="red" name="do_disturb"/>
+                            <q-icon size="xs" color="red" name="do_disturb" />
                           </q-avatar>
                           TIDAK
                         </q-chip>
@@ -362,7 +326,7 @@
                   <q-item class="col">
                   </q-item>
                 </div>
-                <q-separator/>
+                <q-separator />
                 <div class="row">
                   <q-item class="col">
                     <q-item-section>
@@ -370,7 +334,7 @@
                       <q-item-label caption class="text-weight-bold">
                         <q-chip>
                           <q-avatar>
-                            <q-icon size="xs" color="blue" name="handshake"/>
+                            <q-icon size="xs" color="blue" name="handshake" />
                           </q-avatar>
                           {{ this.bantuan_penduduk }}
                         </q-chip>
@@ -383,7 +347,7 @@
                       <q-item-label caption class="text-weight-bold">
                         <q-chip>
                           <q-avatar>
-                            <q-icon size="xs" color="red" name="coronavirus"/>
+                            <q-icon size="xs" color="red" name="coronavirus" />
                           </q-avatar>
                           {{ this.penyakit_penduduk }}
                         </q-chip>
@@ -412,7 +376,7 @@
                     </q-item-section>
                   </q-item>
                 </div>
-                <q-separator/>
+                <q-separator />
                 <div class="row">
                   <q-item class="col">
                     <q-item-section>
@@ -427,7 +391,7 @@
                     </q-item-section>
                   </q-item>
                 </div>
-                <q-separator/>
+                <q-separator />
                 <div class="row">
                   <q-item class="col">
                     <q-item-section>
@@ -455,63 +419,47 @@
                     </q-item-section>
                   </q-item>
                   <q-card class="my-card" flat bordered>
-                    <l-map
-                      :zoom="map.zoom"
-                      :center="map.center"
-                      :max-zoom="map.maxZoom"
-                      :min-zoom="map.minZoom"
-                      style="height: 350px; width: 100%"
-                      v-if="map.loaded"
-                    >
-                      <l-tile-layer
-                        :url="map.tileLayer"
-                        :attribution="map.attribution"
-                      />
-                      <l-marker
-                        v-for="(d, i) in maps"
-                        :key="i"
-                        :lat-lng="[Number(d.location_latitude), Number(d.location_longitude)]"
-                      >
-                      <l-popup>
-                        <q-card class="my-card" flat style="margin: -13px;">
-                          <q-item>
-                            <q-item-section avatar>
-                              <q-avatar>
-                                <img src="images/icons/driver.png">
-                              </q-avatar>
-                            </q-item-section>
+                    <l-map :zoom="map.zoom" :center="map.center" :max-zoom="map.maxZoom" :min-zoom="map.minZoom"
+                      style="height: 350px; width: 100%" v-if="map.loaded">
+                      <l-tile-layer :url="map.tileLayer" :attribution="map.attribution" />
+                      <l-marker v-for="(d, i) in maps" :key="i"
+                        :lat-lng="[Number(d.location_latitude), Number(d.location_longitude)]">
+                        <l-popup>
+                          <q-card class="my-card" flat style="margin: -13px;">
+                            <q-item>
+                              <q-item-section avatar>
+                                <q-avatar>
+                                  <img src="images/icons/driver.png">
+                                </q-avatar>
+                              </q-item-section>
 
-                            <q-item-section>
-                              <q-item-label>{{ d.names }}</q-item-label>
-                              <q-item-label caption class="text-weight-bold">
-                                {{ d.plats }}
-                              </q-item-label>
-                            </q-item-section>
-                          </q-item>
+                              <q-item-section>
+                                <q-item-label>{{ d.names }}</q-item-label>
+                                <q-item-label caption class="text-weight-bold">
+                                  {{ d.plats }}
+                                </q-item-label>
+                              </q-item-section>
+                            </q-item>
 
-                          <q-separator />
+                            <q-separator />
 
-                          <q-card-section horizontal>
-                            <q-card-section class="fit">
-                              <q-icon name="phone" size="20px" color="blue-7" /> . {{ d.phones }}
-                              <q-icon name="alt_route" size="20px" color="blue-7" /> . {{ d.trayeks }}
+                            <q-card-section horizontal>
+                              <q-card-section class="fit">
+                                <q-icon name="phone" size="20px" color="blue-7" /> . {{ d.phones }}
+                                <q-icon name="alt_route" size="20px" color="blue-7" /> . {{ d.trayeks }}
+                              </q-card-section>
+
+                              <q-separator vertical />
+
+                              <q-card-section class="fit">
+                                <q-icon name="local_shipping" size="20px" color="blue-7" /> . {{ d.types }}<br>
+                                <q-icon name="turn_sharp_right" size="20px" color="blue-7" /> . {{ d.kilometerss }} Km<br>
+                              </q-card-section>
                             </q-card-section>
-
-                            <q-separator vertical />
-
-                            <q-card-section class="fit">
-                              <q-icon name="local_shipping" size="20px" color="blue-7" /> . {{ d.types }}<br>
-                              <q-icon name="turn_sharp_right" size="20px" color="blue-7" /> . {{ d.kilometerss }} Km<br>
-                            </q-card-section>
-                          </q-card-section>
-                        </q-card>
-                      </l-popup>
-                      <l-icon
-                        :icon-size="[48, 48]"
-                        :icon-anchor="[16, 32]"
-                        :popup-anchor="[0, -32]"
-                        :icon-url="d.icons"
-                        />
+                          </q-card>
+                        </l-popup>
+                        <l-icon :icon-size="[48, 48]" :icon-anchor="[16, 32]" :popup-anchor="[0, -32]"
+                          :icon-url="d.icons" />
                       </l-marker>
                     </l-map>
                   </q-card>
@@ -652,6 +600,9 @@ export default {
   },
   data() {
     return {
+      penduduk: 0,
+      penduduk_pria: 0,
+      penduduk_wanita: 0,
       pria: pria,
       wanita: wanita,
       map: {
@@ -667,9 +618,7 @@ export default {
       },
       maps: [],
       zoom: 2,
-      penduduk: 0,
-      penduduk_pria: 0,
-      penduduk_wanita: 0,
+
       confirmDialog: false,
       tab: 'penduduk',
       keluarga: [],
@@ -709,7 +658,7 @@ export default {
       rows: [],
       visibles: false,
       chartData: {
-        labels: [ 'January', 'February', 'March'],
+        labels: ['January', 'February', 'March'],
         datasets: [
           {
             label: 'Data One',
@@ -739,104 +688,111 @@ export default {
       },
     }
   },
-  created () {
-    this.getPenduduk()
+  mounted() {
+
     this.getCountPenduduk()
-    this.getCountPendudukByPria()
-    this.getCountPendudukByWanita()
+  },
+  created() {
+    this.getPenduduk()
+    // this.getCountPendudukByPria()
+    // this.getCountPendudukByWanita()
     this.map.loaded = true
   },
   methods: {
-    async getCountPenduduk () {
-      this.$axios.get('penduduk/getCount')
+    async getCountPenduduk() {
+      this.$axios.get('penduduk/getCountPenduduk')
         .finally()
         .then((res) => {
           if (!this.$parseResponse(res.data)) {
             const data = res.data.data
-            this.penduduk = data > 0 ? data : this.penduduk
-          }
-        })
-        .catch(() => this.$commonErrorNotif())
-    },
-    async getCountPendudukByPria () {
-      this.$axios.get(`/penduduk/getCountByJK/${pria}`)
-        .finally()
-        .then((res) => {
-          if (!this.$parseResponse(res.data)) {
-            const data = res.data.data
-            this.penduduk_pria = data > 0 ? data : this.penduduk_pria
-          }
-        })
-        .catch(() => this.$commonErrorNotif())
-    },
-    async getCountPendudukByWanita () {
-      this.$axios.get(`/penduduk/getCountByJK/${wanita}`)
-        .finally()
-        .then((res) => {
-          if (!this.$parseResponse(res.data)) {
-            const data = res.data.data
-            this.penduduk_wanita = data > 0 ? data : this.penduduk_wanita
-          }
-        })
-        .catch(() => this.$commonErrorNotif())
-    },
-    confirm (NOMOR_KK) {
-      this.confirmDialog = true
-      this.$axios.get(`/penduduk/getById/${NOMOR_KK}`)
-        .then((res) => {
-          if (res.data.status) {
-            this.kk_penduduk = res.data.data.NOMOR_KK
-            this.namaLengkap_penduduk = res.data.data.NAMA_LENGKAP
-            this.NIK_penduduk = res.data.data.NIK
-            this.kecamatan_penduduk = res.data.data.KECAMATAN
-            this.desa_penduduk = res.data.data.DESA
-            this.dusun_penduduk = res.data.data.DUSUN
-            this.rt_penduduk = res.data.data.RT
-            this.jenis_kelamin_penduduk = res.data.data.JENIS_KELAMIN
-            this.tgl_lahir_penduduk = res.data.data.TANGGAL_LAHIR
-            this.hubungan_penduduk = res.data.data.HUBUNGAN_KEPALA_KELUARGA
-            this.status_pernikahan_penduduk = res.data.data.STATUS_PERNIKAHAN
-            this.hp_penduduk = res.data.data.HP
-            this.ektp_penduduk = res.data.data.EKTP
-            this.akte_penduduk = res.data.data.AKTE
-          }
-        }),
-      this.$axios.get(`/penduduk/getAllById/${NOMOR_KK}`)
-        .then((res) => {
-          if (res.data.status) {
-            res.data.data.forEach((dataX) => {
-              dataX.names = dataX.NAMA_LENGKAP
-              dataX.niks = dataX.NIK
-              dataX.jenis_kelamins = dataX.JENIS_KELAMIN
-              dataX.tgl_lahirs = dataX.TANGGAL_LAHIR
-              dataX.hubungans = dataX.HUBUNGAN_KEPALA_KELUARGA
-              this.keluarga.push(dataX)
+            var pria = 0
+            var wanita = 0
+            data.map(function (datas) {
+              if (datas._id === "Laki-Laki") {
+                pria = datas.myCount
+              } else {
+                wanita = datas.myCount
+              }
             })
-          }
-        }),
-      this.$axios.get(`/bantuan/getById/${NOMOR_KK}`)
-        .then((res) => {
-          if (res.data.status) {
-            this.bantuan_penduduk = res.data.data.BANTUAN
-          }
-        }),
-      this.$axios.get(`/penyakit/getById/${NOMOR_KK}`)
-        .then((res) => {
-          if (res.data.status) {
-            this.penyakit_penduduk = res.data.data.PENYAKIT
+            this.penduduk_pria = Number(pria)
+            this.penduduk_wanita = Number(wanita)
+            this.penduduk = pria + wanita
           }
         })
+        .catch((err) => console.log(err))
     },
     getPenduduk: async function () {
-      await this.$axios.get('/penduduk/getAll')
+      await this.$axios.get('/penduduk/')
         .finally()
         .then((response) => {
           if (!this.$parseResponse(response.data)) {
             this.rows = response.data.data
           }
         })
-        .catch(() => this.$commonErrorNotif())
+        .catch((err) => console.log(err))
     },
+    confirm(data) {
+      this.confirmDialog = true
+      this.kk_penduduk = data.NOMOR_KK
+      this.namaLengkap_penduduk =data.NAMA_LENGKAP
+      this.NIK_penduduk = data.NIK
+      this.kecamatan_penduduk = data.KECAMATAN
+      this.desa_penduduk = data.DESA
+      this.dusun_penduduk = data.DUSUN
+      this.rt_penduduk = data.RT
+      this.jenis_kelamin_penduduk = data.JENIS_KELAMIN
+      this.tgl_lahir_penduduk = data.TANGGAL_LAHIR
+      this.hubungan_penduduk = data.HUBUNGAN_KEPALA_KELUARGA
+      this.status_pernikahan_penduduk = data.STATUS_PERNIKAHAN
+      this.hp_penduduk = data.HP
+      this.ektp_penduduk = data.EKTP
+      this.akte_penduduk = data.AKTE
+      // this.$axios.get(`/penduduk/getById/${NOMOR_KK}`)
+      //   .then((res) => {
+      //     if (res.data.status) {
+      //       this.kk_penduduk = res.data.data.NOMOR_KK
+      //       this.namaLengkap_penduduk = res.data.data.NAMA_LENGKAP
+      //       this.NIK_penduduk = res.data.data.NIK
+      //       this.kecamatan_penduduk = res.data.data.KECAMATAN
+      //       this.desa_penduduk = res.data.data.DESA
+      //       this.dusun_penduduk = res.data.data.DUSUN
+      //       this.rt_penduduk = res.data.data.RT
+      //       this.jenis_kelamin_penduduk = res.data.data.JENIS_KELAMIN
+      //       this.tgl_lahir_penduduk = res.data.data.TANGGAL_LAHIR
+      //       this.hubungan_penduduk = res.data.data.HUBUNGAN_KEPALA_KELUARGA
+      //       this.status_pernikahan_penduduk = res.data.data.STATUS_PERNIKAHAN
+      //       this.hp_penduduk = res.data.data.HP
+      //       this.ektp_penduduk = res.data.data.EKTP
+      //       this.akte_penduduk = res.data.data.AKTE
+      //     }
+      //   }),
+      //   this.$axios.get(`/penduduk/getAllById/${NOMOR_KK}`)
+      //     .then((res) => {
+      //       if (res.data.status) {
+      //         res.data.data.forEach((dataX) => {
+      //           dataX.names = dataX.NAMA_LENGKAP
+      //           dataX.niks = dataX.NIK
+      //           dataX.jenis_kelamins = dataX.JENIS_KELAMIN
+      //           dataX.tgl_lahirs = dataX.TANGGAL_LAHIR
+      //           dataX.hubungans = dataX.HUBUNGAN_KEPALA_KELUARGA
+      //           this.keluarga.push(dataX)
+      //         })
+      //       }
+      //     }),
+      //   this.$axios.get(`/bantuan/getById/${NOMOR_KK}`)
+      //     .then((res) => {
+      //       if (res.data.status) {
+      //         this.bantuan_penduduk = res.data.data.BANTUAN
+      //       }
+      //     }),
+      //   this.$axios.get(`/penyakit/getById/${NOMOR_KK}`)
+      //     .then((res) => {
+      //       if (res.data.status) {
+      //         this.penyakit_penduduk = res.data.data.PENYAKIT
+      //       }
+      //     })
+    },
+
   }
 }
 </script>
